@@ -5,8 +5,12 @@ const refs = {
     input: document.querySelector('input'),
     textarea: document.querySelector('textarea'),
 } 
+    let formData = {
+    email: '',
+    message: '',
+};
 const KEY_LOCAL = "feedback-form-state";
-let formData = {};
+
 saveInput();
 refs.form.addEventListener('input', throttle((onInput), 500));
 refs.form.addEventListener('submit', onSubmit);
@@ -20,6 +24,10 @@ function onSubmit(event) {
     console.log(JSON.parse(localStorage.getItem(KEY_LOCAL)));
     event.currentTarget.reset();
     localStorage.removeItem(KEY_LOCAL);
+    formData = {
+        email: '',
+        message: '',
+    }
 }
 
 function saveInput() {
